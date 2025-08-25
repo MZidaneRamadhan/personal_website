@@ -1,26 +1,81 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* * {
+  color: white;
+} */
+
+@keyframes moveLight1 {
+  0% {
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+  25% {
+    top: 0;
+    left: 100%;
+    transform: translateX(-100%);
+  }
+  50% {
+    top: 100%;
+    left: 100%;
+    transform: translate(-100%, -100%);
+  }
+  75% {
+    top: 100%;
+    left: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    top: 0;
+    left: 0;
+    transform: none;
+  }
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes moveLight2 {
+  0% {
+    bottom: 0;
+    right: 0;
+    transform: none;
+  }
+  25% {
+    bottom: 0;
+    right: 100%;
+    transform: translateX(100%);
+  }
+  50% {
+    bottom: 100%;
+    right: 100%;
+    transform: translate(100%, 100%);
+  }
+  75% {
+    bottom: 100%;
+    right: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    bottom: 0;
+    right: 0;
+    transform: none;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-light1 {
+  animation: moveLight1 4s linear infinite;
+  animation-play-state: paused;
+  opacity: 0;
+}
+.animate-light2 {
+  animation: moveLight2 4s linear infinite;
+  animation-play-state: paused;
+  opacity: 0;
+}
+.start:hover .animate-light1,
+.start:hover .animate-light2 {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+.glow {
+  filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 12px currentColor);
 }
